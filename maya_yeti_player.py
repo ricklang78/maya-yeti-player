@@ -46,11 +46,11 @@ if user_input:
     
     # Call Grok API
     response = client.chat.completions.create(
-        model="grok-4-fast-reasoning",  # Fast + reasoning, good for creative/humorous Maya responses
+        model="grok-4-1-fast-reasoning",  # ← Use this first; fallback to grok-4-0709 if needed
         messages=st.session_state.messages,
-        max_tokens=250,  # Slightly higher for rationale, but still concise
-        temperature=0.85  # Good balance of creativity and consistency
-    )
+        max_tokens=250,
+        temperature=0.85
+)
     
     ai_response = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": ai_response})
