@@ -46,7 +46,7 @@ if user_input:
     
     # Call Grok API
     response = client.chat.completions.create(
-        model="grok-4-1-fast-reasoning",  # ← Use this first; fallback to grok-4-0709 if needed
+        model="grok-4-latest",  # ← Use this first; fallback to grok-4-0709 if needed
         messages=st.session_state.messages,
         max_tokens=250,
         temperature=0.85
