@@ -3,7 +3,8 @@ import streamlit as st
 from openai import OpenAI
 
 # Replace with your xAI Grok API key
-API_KEY = "xai-YVTUephPI6lW5GljdKG8JfQRsyTTAcXcYDkIJzywbENGZ8rYEa7ivez0OG9Tpfd7P66l6owzXH6tI9TH"   # ← Make sure this is filled in correctly!
+import streamlit as st
+API_KEY = st.secrets["XAI_API_KEY"]
 
 # Initialize Grok client
 client = OpenAI(
@@ -45,7 +46,7 @@ if user_input:
     
     # Call Grok API
     response = client.chat.completions.create(
-        model="grok-4",  # or "grok-beta" / latest available
+        model="grok-4-fast-reasoning",  # Fast + reasoning, good for creative/humorous Maya responses
         messages=st.session_state.messages,
         max_tokens=250,  # Slightly higher for rationale, but still concise
         temperature=0.85  # Good balance of creativity and consistency
